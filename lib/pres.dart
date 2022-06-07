@@ -29,51 +29,34 @@ class Pres extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: ConstrainedBox(
-          constraints:
-              BoxConstraints(maxWidth: MediaQuery.of(context).size.width),
-          child: Card(
-              margin: const EdgeInsets.all(4),
-              color: Colors.white,
-              child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                              padding: EdgeInsets.all(5.0),
-                              child: Text(this.debut)),
-                          Padding(
-                              padding: EdgeInsets.all(5.0),
-                              child: Text(this.fin))
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(5.0),
-                            child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Expanded(
-                                    child: Text(this.nom + " " + this.prenom,
-                                        overflow: TextOverflow.ellipsis))),
-                          ),
-                          Padding(
-                              padding: EdgeInsets.all(5.0),
-                              child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Expanded(
-                                      child: Text(this.titre,
-                                          softWrap: false,
-                                          maxLines: 3,
-                                          style: TextStyle(fontSize: 10),
-                                          overflow: TextOverflow.ellipsis))))
-                        ],
-                      ),
-                    ],
-                  )))),
+      child: Card(
+          margin: const EdgeInsets.all(4),
+          color: Colors.white,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Expanded(
+                          child: Text(this.nom + " " + this.prenom,
+                              overflow: TextOverflow.ellipsis))),
+                ),
+                Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Expanded(
+                            child: Text(this.titre,
+                                softWrap: false,
+                                maxLines: 3,
+                                style: TextStyle(fontSize: 10),
+                                overflow: TextOverflow.ellipsis))))
+              ],
+            ),
+          )),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => PresPage(
