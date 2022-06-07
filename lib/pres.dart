@@ -30,33 +30,31 @@ class Pres extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Card(
-          margin: const EdgeInsets.all(4),
-          color: Colors.white,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Expanded(
-                          child: Text(this.nom + " " + this.prenom,
-                              overflow: TextOverflow.ellipsis))),
-                ),
-                Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Expanded(
-                            child: Text(this.titre,
-                                softWrap: false,
-                                maxLines: 3,
-                                style: TextStyle(fontSize: 10),
-                                overflow: TextOverflow.ellipsis))))
-              ],
+        margin: const EdgeInsets.all(4),
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(this.nom + " " + this.prenom,
+                      overflow: TextOverflow.ellipsis)),
             ),
-          )),
+            Padding(
+                padding: EdgeInsets.all(5.0),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(this.titre,
+                        softWrap: false,
+                        maxLines: 3,
+                        style: TextStyle(fontSize: 10),
+                        overflow: TextOverflow.ellipsis)))
+          ],
+        ),
+      ),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => PresPage(
@@ -65,13 +63,3 @@ class Pres extends StatelessWidget {
     );
   }
 }
-// child: Container(
-//         height: 56.0, // in logical pixels
-//         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-//         decoration: BoxDecoration(),
-//         // Row is a horizontal, linear layout.
-//         child: Column(
-//           // <Widget> is the type of items in the list.
-//           children: [Text(this.nom + " " + this.prenom), Text(this.titre)],
-//         ),
-//       ),

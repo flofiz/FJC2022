@@ -44,12 +44,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   // List<List<dynamic>> _data = [];
-  var _data = <Pres>[];
+  final _data = <Pres>[];
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
     List<List<dynamic>> _listData =
         const CsvToListConverter(fieldDelimiter: ";")
             .convert(_rawData, eol: "\n");
+
     _listData.removeAt(0);
     for (var item in _listData) {
       _data.add(Pres(
@@ -100,8 +101,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    _loadCSV();
-
     var to_show = _data.where((Pres) => Pres.jour == "1").toList();
     to_show = to_show.where((Pres) => Pres.type == "Oral").toList();
     return Scaffold(
@@ -153,18 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ListView.builder(
         itemCount: to_show.length,
+        shrinkWrap: true,
         itemBuilder: (_, index) {
           return to_show[index];
-          // return Pres(
-          //   nom: _data[index][0].toString(),
-          //   prenom: _data[index][1].toString(),
-          //   resume: _data[index][2].toString(),
-          //   titre: _data[index][3].toString(),
-          //   lieu: _data[index][4].toString(),
-          //   debut: _data[index][5].toString(),
-          //   fin: _data[index][6].toString(),
-          //   jour: _data[index][7].toString(),
-          // );
         },
       ),
     );
