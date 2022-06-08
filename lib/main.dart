@@ -45,10 +45,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   // List<List<dynamic>> _data = [];
-  final _data = <Pres>[];
+  var _data = <Pres>[];
+  String day_fliter = "2";
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
-    final List<List<dynamic>> _listData =
+
+    List<List<dynamic>> _listData =
         const CsvToListConverter(fieldDelimiter: ";")
             .convert(_rawData, eol: '\n');
     _listData.removeAt(0);
@@ -65,28 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
         type: item[3].toString(),
       ));
     }
+    setState(() {
+      _data = _data;
+    });
   }
 
-  // This function is triggered when the floating button is pressed
-  // void _loadCSV() async {
-  //   final _rawData = await rootBundle.loadString("assets/data.csv");
-  //   List<List<dynamic>> _listData =
-  //       const CsvToListConverter().convert(_rawData);
-  //   setState(() {
-  //     for (var item in _listData)
-  //       _data.add(Pres(
-  //         nom: item[0].toString(),
-  //         prenom: item[1].toString(),
-  //         resume: item[2].toString(),
-  //         titre: item[3].toString(),
-  //         lieu: item[4].toString(),
-  //         debut: item[5].toString(),
-  //         fin: item[6].toString(),
-  //         jour: item[7],
-  //       ));
-  //     // _data = _listData;
-  //   });
-  // }
   @override
   void initState() {
     super.initState();
@@ -101,7 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    var to_show = _data.where((Pres) => Pres.jour == "1").toList();
+
+    var to_show = _data.where((Pres) => Pres.jour == day_fliter).toList();
     to_show = to_show.where((Pres) => Pres.type == "Oral").toList();
     return Scaffold(
       appBar: AppBar(
@@ -136,15 +122,21 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Icon(Icons.verified_user),
               title: Text('Day 1'),
               onTap: () => {
-                Navigator.of(context).pop(),
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Day1()))
+                setState(() {
+                  day_fliter = "1";
+                }),
+                Navigator.of(context).pop()
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Day 2'),
-              onTap: () => {Navigator.of(context).pop()},
+              onTap: () => {
+                setState(() {
+                  day_fliter = "2";
+                }),
+                Navigator.of(context).pop()
+              },
             ),
             ListTile(
               leading: Icon(Icons.border_color),
