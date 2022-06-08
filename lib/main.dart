@@ -44,7 +44,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   // List<List<dynamic>> _data = [];
-  final _data = <Pres>[];
+  var _data = <Pres>[];
+  String day_fliter = "2";
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
 
@@ -66,6 +67,9 @@ class _MyHomePageState extends State<MyHomePage> {
         type: item[3].toString(),
       ));
     }
+    setState(() {
+      _data = _data;
+    });
   }
 
   @override
@@ -82,7 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    var to_show = _data.where((Pres) => Pres.jour == "1").toList();
+
+    var to_show = _data.where((Pres) => Pres.jour == day_fliter).toList();
     to_show = to_show.where((Pres) => Pres.type == "Oral").toList();
     return Scaffold(
       appBar: AppBar(
@@ -116,12 +121,22 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.verified_user),
               title: Text('Day 1'),
-              onTap: () => {Navigator.of(context).pop()},
+              onTap: () => {
+                setState(() {
+                  day_fliter = "1";
+                }),
+                Navigator.of(context).pop()
+              },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Day 2'),
-              onTap: () => {Navigator.of(context).pop()},
+              onTap: () => {
+                setState(() {
+                  day_fliter = "2";
+                }),
+                Navigator.of(context).pop()
+              },
             ),
             ListTile(
               leading: Icon(Icons.border_color),
