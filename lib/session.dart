@@ -2,16 +2,17 @@ import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:fjc_2022/pres.dart';
 import 'package:flutter/services.dart';
+import 'dart:convert';
 
 class SessionPage extends StatefulWidget {
   const SessionPage({Key? key, required this.session}) : super(key: key);
   final String session;
-
   @override
   State<StatefulWidget> createState() => _SessionPage();
 }
 
 class _SessionPage extends State<SessionPage> {
+  final Utf8Codec utf8 = Utf8Codec();
   var _data = <Pres>[];
   void showOnTap(session) async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");

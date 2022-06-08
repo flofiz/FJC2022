@@ -5,6 +5,7 @@ import 'package:time_planner/time_planner.dart';
 import 'package:flutter/material.dart';
 import 'package:fjc_2022/pres.dart';
 import 'package:fjc_2022/session.dart';
+import 'dart:convert';
 
 class Day1 extends StatelessWidget {
   // Liste des tâches qui est appelé par le TimePlanner
@@ -24,7 +25,7 @@ class Day1 extends StatelessWidget {
     // Création d'un objet TimePlannerTask par ligne
     for (var item in _listData) {
       _addObject(item[0], item[1], item[2], item[3], item[5], item[6], item[7],
-          context, item[9]);
+          context, item[8]);
     }
   }
 
