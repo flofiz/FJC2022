@@ -5,7 +5,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Side menu'),
+        title: Text("Page d'acceuil"),
       ),
       body: Image.asset('assets/Logo.jpeg'),
     );

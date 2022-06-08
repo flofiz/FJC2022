@@ -1,6 +1,7 @@
 import 'package:fjc_2022/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:fjc_2022/pres.dart';
+import 'package:fjc_2022/day1.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert' show utf8;
 import 'package:csv/csv.dart';
@@ -47,10 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
   final _data = <Pres>[];
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
-    List<List<dynamic>> _listData =
+    final List<List<dynamic>> _listData =
         const CsvToListConverter(fieldDelimiter: ";")
-            .convert(_rawData, eol: "\n");
-
+            .convert(_rawData, eol: '\n');
     _listData.removeAt(0);
     for (var item in _listData) {
       _data.add(Pres(
@@ -135,7 +135,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.verified_user),
               title: Text('Day 1'),
-              onTap: () => {Navigator.of(context).pop()},
+              onTap: () => {
+                Navigator.of(context).pop(),
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Day1()))
+              },
             ),
             ListTile(
               leading: Icon(Icons.settings),
