@@ -47,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
     final List<List<dynamic>> _listData =
-        const CsvToListConverter(fieldDelimiter: ";").convert(_rawData);
+        const CsvToListConverter(fieldDelimiter: ";", eol: '\n')
+            .convert(_rawData);
     _listData.removeAt(0);
     for (var item in _listData)
       _data.add(Pres(
@@ -63,26 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ));
   }
 
-  // This function is triggered when the floating button is pressed
-  // void _loadCSV() async {
-  //   final _rawData = await rootBundle.loadString("assets/data.csv");
-  //   List<List<dynamic>> _listData =
-  //       const CsvToListConverter().convert(_rawData);
-  //   setState(() {
-  //     for (var item in _listData)
-  //       _data.add(Pres(
-  //         nom: item[0].toString(),
-  //         prenom: item[1].toString(),
-  //         resume: item[2].toString(),
-  //         titre: item[3].toString(),
-  //         lieu: item[4].toString(),
-  //         debut: item[5].toString(),
-  //         fin: item[6].toString(),
-  //         jour: item[7],
-  //       ));
-  //     // _data = _listData;
-  //   });
-  // }
   @override
   void initState() {
     super.initState();
