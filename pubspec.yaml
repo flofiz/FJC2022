@@ -62,6 +62,7 @@ flutter:
     - assets/data.csv
     - assets/Tableau_abstract2.csv
     - assets/Logo.jpeg
+    - assets/jeudi16.csv
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

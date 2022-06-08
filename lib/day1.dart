@@ -1,7 +1,61 @@
+import 'dart:ffi';
+
+import 'package:csv/csv.dart';
+import 'package:fjc_2022/pres.dart';
+import 'package:flutter/services.dart';
 import 'package:time_planner/time_planner.dart';
 import 'package:flutter/material.dart';
 
 class Day1 extends StatelessWidget {
+  var _data = <Pres>[];
+
+  void _loadCSV() async {
+    var _rawData = await rootBundle.loadString("assets/jeudi16.csv");
+
+    List<List<dynamic>> _listData =
+        const CsvToListConverter(fieldDelimiter: ";")
+            .convert(_rawData, eol: '\n');
+    _listData.removeAt(0);
+    for (var item in _listData) {
+      _data.add(Pres(
+        nom: item[0].toString(),
+        prenom: item[1].toString(),
+        resume: item[4].toString(),
+        titre: item[2].toString(),
+        lieu: item[9].toString(),
+        debut: item[6].toString(),
+        fin: item[7].toString(),
+        jour: item[5].toString(),
+        type: item[3].toString(),
+      ));
+    }
+    setState(() {
+      _data = _data;
+    });
+  }
+
+  void _addObject() {
+    tasks.add(
+      TimePlannerTask(
+          color: Colors.red,
+          dateTime: TimePlannerDateTime(
+            day: 0,
+            hour: 8,
+            minutes: 30,
+          ),
+          onTap: () {},
+          minutesDuration: 30,
+          daysDuration: 1),
+    );
+  }
+
+  // setState(() {’
+  //   _data = _data;
+  // });
+  _addObject();
+  // List<TimePlannerTask> tasks = [];
+  double line = 8.5;
+
   List<TimePlannerTask> tasks = [
     TimePlannerTask(
       // background color for task
@@ -72,5 +126,11 @@ class Day1 extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }

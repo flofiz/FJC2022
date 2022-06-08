@@ -125,7 +125,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 setState(() {
                   day_fliter = "1";
                 }),
-                Navigator.of(context).pop()
+                Navigator.of(context).pop(),
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Day1()))
               },
             ),
             ListTile(
