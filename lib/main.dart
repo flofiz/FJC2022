@@ -1,3 +1,4 @@
+import 'package:fjc_2022/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:fjc_2022/pres.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -46,11 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
   final _data = <Pres>[];
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
-    final List<List<dynamic>> _listData =
-        const CsvToListConverter(fieldDelimiter: ";", eol: '\n')
-            .convert(_rawData);
+
+    List<List<dynamic>> _listData =
+        const CsvToListConverter(fieldDelimiter: ";")
+            .convert(_rawData, eol: "\n");
+
     _listData.removeAt(0);
-    for (var item in _listData)
+    for (var item in _listData) {
       _data.add(Pres(
         nom: item[0].toString(),
         prenom: item[1].toString(),
@@ -62,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
         jour: item[5].toString(),
         type: item[3].toString(),
       ));
+    }
   }
 
   @override
@@ -85,6 +89,47 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+      ),
+
+      // Menu pour accéder à toutes les différentes pages
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'Menu',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+            ),
+            ListTile(
+                leading: Icon(Icons.input),
+                title: Text('Home page'),
+                onTap: () => {
+                      Navigator.of(context).pop(),
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()))
+                    }),
+            ListTile(
+              leading: Icon(Icons.verified_user),
+              title: Text('Day 1'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Day 2'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.border_color),
+              title: Text('Saved'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+          ],
+        ),
       ),
       body: ListView.builder(
         itemCount: to_show.length,
