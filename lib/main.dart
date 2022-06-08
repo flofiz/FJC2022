@@ -65,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
         fin: item[7].toString(),
         jour: item[5].toString(),
         type: item[3].toString(),
+        session: item[10].toString(),
       ));
     }
     setState(() {

@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:fjc_2022/prespage.dart';
+import 'package:fjc_2022/abstract.dart';
 
 class Pres extends StatelessWidget {
   String nom;
@@ -13,6 +13,7 @@ class Pres extends StatelessWidget {
   String jour;
   String lieu;
   String type;
+  String session;
 
   Pres(
       {this.nom = "Nom",
@@ -24,7 +25,8 @@ class Pres extends StatelessWidget {
       this.lieu = "Lieu",
       this.debut = "0.0",
       this.fin = "0.0",
-      this.jour = "0"});
+      this.jour = "0",
+      this.session = "Session"});
 
   @override
   Widget build(BuildContext context) {
