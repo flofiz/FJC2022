@@ -128,7 +128,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
                 Navigator.of(context).pop(),
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Day1()))
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Day1(
+                              data: _data
+                                  .where((Pres) => Pres.jour == "1")
+                                  .toList(),
+                            )))
               },
             ),
             ListTile(

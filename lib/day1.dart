@@ -8,6 +8,8 @@ import 'package:fjc_2022/session.dart';
 
 class Day1 extends StatelessWidget {
   // Liste des tâches qui est appelé par le TimePlanner
+  List<Pres> data;
+  Day1({Key? key, required this.data}) : super(key: key);
   List<TimePlannerTask> tasks = [];
 
   // Leture du fichier csv pour le Jeudi
@@ -45,7 +47,7 @@ class Day1 extends StatelessWidget {
 
   // Créé et ajoute un objet à la liste tasks
   void _addObject(nom, heure, minutes, duree, jour, dureeJour, theme,
-      BuildContext context, engTheme) {
+      BuildContext context, String engTheme) {
     tasks.add(
       TimePlannerTask(
         color: getCouleur(theme),
@@ -61,6 +63,9 @@ class Day1 extends StatelessWidget {
               MaterialPageRoute(
                   builder: (context) => SessionPage(
                         session: engTheme,
+                        to_show: data
+                            .where((Pres) => Pres.session == engTheme)
+                            .toList(),
                       )))
         },
         minutesDuration: duree,
