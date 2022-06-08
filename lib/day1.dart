@@ -29,9 +29,6 @@ class Day1 extends StatelessWidget {
         type: item[3].toString(),
       ));
     }
-    setState(() {
-      _data = _data;
-    });
   }
 
   void _addObject() {
@@ -48,11 +45,10 @@ class Day1 extends StatelessWidget {
           daysDuration: 1),
     );
   }
-
   // setState(() {’
   //   _data = _data;
   // });
-  _addObject();
+
   // List<TimePlannerTask> tasks = [];
   double line = 8.5;
 
@@ -93,6 +89,7 @@ class Day1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _addObject();
     return Scaffold(
       appBar: AppBar(
         title: Text('Planning Jeudi 16 Juin'),
