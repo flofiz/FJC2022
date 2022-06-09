@@ -5,6 +5,8 @@ import 'package:fjc_2022/day1.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert' show utf8;
 import 'package:csv/csv.dart';
+import 'event.dart';
+import 'package:time_planner/time_planner.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,7 +48,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // List<List<dynamic>> _data = [];
   var _data = <Pres>[];
-  String day_fliter = "2";
+  var _events = <Event>[];
+
+  int day_fliter = 0;
+
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
 
@@ -68,8 +73,30 @@ class _MyHomePageState extends State<MyHomePage> {
         session: item[10].toString(),
       ));
     }
+
+    _rawData = await rootBundle.loadString("assets/jeudi16.csv");
+
+    _listData = const CsvToListConverter(fieldDelimiter: ";", eol: '\n')
+        .convert(_rawData);
+    _listData.removeAt(0);
+
+    for (var item in _listData) {
+      _events.add(Event(
+          nom: item[0],
+          heure: item[1],
+          minutes: item[2],
+          duree: item[3],
+          jour: item[5],
+          dureeJour: item[6],
+          theme: item[7],
+          engTheme: item[8],
+          presentations:
+              _data.where((Pres) => Pres.session == item[8]).toList()));
+    }
+
     setState(() {
       _data = _data;
+      _events = _events;
     });
   }
 
@@ -88,8 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
 
-    var to_show = _data.where((Pres) => Pres.jour == day_fliter).toList();
-    to_show = to_show.where((Pres) => Pres.type == "Oral").toList();
+    List<TimePlannerTask> to_show =
+        _events.where((Event) => Event.jour == day_fliter).toList();
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -124,17 +152,17 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Day 1'),
               onTap: () => {
                 setState(() {
-                  day_fliter = "1";
+                  day_fliter = 0;
                 }),
                 Navigator.of(context).pop(),
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Day1(
-                              data: _data
-                                  .where((Pres) => Pres.jour == "1")
-                                  .toList(),
-                            )))
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => Day1(
+                //               data: _data
+                //                   .where((Pres) => Pres.jour == "1")
+                //                   .toList(),
+                //             )))
               },
             ),
             ListTile(
@@ -142,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Day 2'),
               onTap: () => {
                 setState(() {
-                  day_fliter = "2";
+                  day_fliter = 2;
                 }),
                 Navigator.of(context).pop()
               },
@@ -155,12 +183,32 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: ListView.builder(
-        itemCount: to_show.length,
-        shrinkWrap: true,
-        itemBuilder: (_, index) {
-          return to_show[index];
-        },
+      body: Center(
+        child: TimePlanner(
+          // time will be start at this hour on table
+          startHour: 8,
+          // time will be end at this hour on table
+          endHour: 22,
+          // each header is a column and a day
+          headers: [
+            TimePlannerTitle(
+              date: " ",
+              title: "Orbigny",
+            ),
+            TimePlannerTitle(
+              date: "",
+              title: "Ampère",
+            ),
+            TimePlannerTitle(
+              date: " ",
+              title: "Salle R3",
+            ),
+          ],
+          // List of task will be show on the time planner
+          tasks: _events,
+
+          style: TimePlannerStyle(showScrollBar: true),
+        ),
       ),
     );
   }
