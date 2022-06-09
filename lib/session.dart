@@ -2,6 +2,7 @@ import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:fjc_2022/pres.dart';
 import 'package:flutter/services.dart';
+import 'dart:convert';
 
 class SessionPage extends StatelessWidget {
   final String session;
@@ -11,8 +12,6 @@ class SessionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("buid");
-    print(this.to_show);
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
