@@ -16,6 +16,7 @@ class Event extends TimePlannerTask {
   final String engTheme;
   final String type;
   final List<Pres> presentations;
+  final int jour_pres;
 
   Event(
       {required this.nom,
@@ -27,7 +28,8 @@ class Event extends TimePlannerTask {
       required this.theme,
       required this.engTheme,
       required this.type,
-      required this.presentations})
+      required this.presentations,
+      required this.jour_pres})
       : super(
             minutesDuration: duree,
             dateTime: TimePlannerDateTime(
@@ -72,6 +74,7 @@ class Event extends TimePlannerTask {
                     builder: (context) => PosterPage(
                           session: engTheme,
                           to_show: presentations,
+                          jour: jour_pres,
                         )))
           }
         else if (engTheme != "Break")
