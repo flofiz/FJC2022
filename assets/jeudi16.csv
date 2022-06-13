@@ -1,18 +1,21 @@
-﻿Nom;Heure début;Minutes début;Durée;Salle;Jour;DurJour;Thématique;Title_Session;Couleur
-Maladies et génétique;9;30;90;Salle R3;2;1;Santé;Diseases and Genetics;blue
-Géologie et botanique;9;30;90;Orbingy;0;1;Environnement;Geology and Botany;green
-Nutrition et alimentation;9;30;90;Ampère;1;1;Santé;Nutrition and Food;blue
-Pause;11;0;20;Hall;0;3;Pause;Break;grey
-Neurobiologie;11;20;90;Orbingy;0;1;Santé;Neurobiology;blue
-Pneumologie & cardiologie;11;20;90;Ampère;1;1;Santé;Pulmonology and Cardiology;blue
-Divers 1;11;20;90;Salle R3;2;1;Environnement;Various 1;green
-Pause déjeuner;12;50;90;RU Montmuzard;0;3;Pause;Luch break;grey
-Goût et alimentation;14;20;70;Hall;0;1;Santé;Taste and Food;blue
-Cogntiion, apprentissage et mouvement;14;20;70;Hall;0;1;Santé;Cognition, Learning and Mouvement;blue
-Paléoécologie;14;20;70;Hall;0;1;Environnement;Paleoecology;green
-Agroécologie;14;20;70;Hall;0;1;Environnement;Agroecology;green
-Pause;15;30;20;Hall;0;3;Pause;Break;grey
-Table ronde expérimentarium;15;50;60;Salle R4;0;3;Table ronde;Exerimentarium panel;yellow
-Cognition et apprentissage;16;50;75;Salle R3;2;1;Santé;Cognition and Learning;blue
-Cancérologie 1;16;50;75;Orbingy;0;1;Santé;Oncology 1;blue
-Microbiologie;16;50;75;Ampère;1;1;Santé;Microbiology;blue
+Nom;Heure début;Minutes début;Durée;Salle;Jour;DurJour;Thématique;Title_Session;Type session;Jour;Couleur
+Accueil;8;30;30;Hall;0;3;Pause;Break;Pause;1;blue
+Cérémonie d'ouverture;9;0;30;Keiling;0;3;Pause;Break;Pause;1;blue
+Maladies et génétique;9;30;90;Salle R3;2;1;Santé;Diseases and Genetics;Oral;1;blue
+Géologie et botanique;9;30;90;Orbingy;0;1;Environnement;Geology and Botany;Oral;1;green
+Nutrition et alimentation;9;30;90;Ampère;1;1;Santé;Nutrition and Food;Oral;1;blue
+Pause;11;0;20;Hall;0;3;Pause;Break;Oral;1;grey
+Neurobiologie;11;20;90;Orbingy;0;1;Santé;Neurobiology;Oral;1;blue
+Pneumologie & cardiologie;11;20;90;Ampère;1;1;Santé;Pulmonology and Cardiology;Oral;1;blue
+Divers 1;11;20;90;Salle R3;2;1;Environnement;Various 1;Oral;1;green
+Pause déjeuner;12;50;90;RU Montmuzard;0;3;Pause;Break;Oral;1;grey
+Goût et alimentation;14;20;70;Hall;0;1;Santé;Taste and Food;Poster;1;blue
+Cogntiion, apprentissage et mouvement;14;20;70;Hall;0;1;Santé;Cognition, Learning and Mouvement;Poster;1;blue
+Paléoécologie;14;20;70;Hall;0;1;Environnement;Paleoecology;Poster;1;green
+Agroécologie;14;20;70;Hall;0;1;Environnement;Agroecology;Poster;1;green
+Posters;14;20;70;Hall;0;3;Posters;Posters;Posters;1;green
+Pause;15;30;20;Hall;0;3;Pause;Break;Oral;1;grey
+Table ronde expérimentarium;15;50;60;Salle R4;0;3;Table ronde;Exerimentarium panel;Oral;1;yellow
+Cognition et apprentissage;16;50;75;Salle R3;2;1;Santé;Cognition and Learning;Oral;1;blue
+Cancérologie 1;16;50;75;Orbingy;0;1;Santé;Oncology 1;Oral;1;blue
+Microbiologie;16;50;75;Ampère;1;1;Santé;Microbiology;Oral;1;blue

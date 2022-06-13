@@ -1,0 +1,16 @@
+﻿Nom;Heure début;Minutes début;Durée;Salle;Jour;DurJour;Thématique;Title_Session;Jour;Couleur
+Accueil;8;30;30;Hall;0;3;Pause;Break;2;blue
+Cancérologie 2;9;0;90;Orbigny;0;1;Santé;Oncology 2;2;blue
+Nutrition et goût;9;0;90;Ampère;1;1;Santé;;2;blue
+Divers 2;9;0;90;Salle R3;2;1;Environnement;Various 2;2;blue
+Pause;10;30;20;Hall;0;3;Pause;Break;2;blue
+Maladies et cancers;10;50;60;Hall;0;3;Santé;;2;blue
+Microbiologie;10;50;60;Hall;0;3;Santé;;2;blue
+Divers;10;50;60;Hall;0;3;Environnement;;2;blue
+Conférence;12;0;60;Keiling;0;3;Environnement;;2;blue
+Pause déjeuner;13;0;60;RU Monrmuzard;0;3;Pause;Break;2;blue
+Table ronde post-doc;14;20;60;Salle R2;0;3;Table ronde;;2;blue
+Pause;15;20;20;Hall;0;3;Pause;Break;2;blue
+Cancérologie 3;15;40;90;Salle R3;2;1;Santé;Oncology 3;2;blue
+Cognition et mouvement;15;40;90;Orbigny;0;1;Santé;;2;blue
+Géologie;15;40;90;Ampère;1;1;Environnement;;2;blue

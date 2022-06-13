@@ -1,8 +1,5 @@
-import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:fjc_2022/pres.dart';
-import 'package:flutter/services.dart';
-import 'dart:convert';
 
 class SessionPage extends StatelessWidget {
   final String session;

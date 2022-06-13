@@ -81,17 +81,34 @@ class _MyHomePageState extends State<MyHomePage> {
     _listData.removeAt(0);
 
     for (var item in _listData) {
-      _events.add(Event(
-          nom: item[0],
-          heure: item[1],
-          minutes: item[2],
-          duree: item[3],
-          jour: item[5],
-          dureeJour: item[6],
-          theme: item[7],
-          engTheme: item[8],
-          presentations:
-              _data.where((Pres) => Pres.session == item[8]).toList()));
+      if (item[0] == "Posters") {
+        _events.add(Event(
+            nom: item[0],
+            heure: item[1],
+            minutes: item[2],
+            duree: item[3],
+            jour: item[5],
+            dureeJour: item[6],
+            theme: item[7],
+            engTheme: item[8],
+            type: item[9],
+            presentations: _data
+                .where((Pres) => Pres.type == 'Poster' && Pres.jour == '1')
+                .toList()));
+      } else {
+        _events.add(Event(
+            nom: item[0],
+            heure: item[1],
+            minutes: item[2],
+            duree: item[3],
+            jour: item[5],
+            dureeJour: item[6],
+            theme: item[7],
+            engTheme: item[8],
+            type: item[9],
+            presentations:
+                _data.where((Pres) => Pres.session == item[8]).toList()));
+      }
     }
 
     setState(() {
@@ -115,8 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
 
-    List<TimePlannerTask> to_show =
-        _events.where((Event) => Event.jour == day_fliter).toList();
+    // List<TimePlannerTask> to_show =
+    //     _events.where((Event) => Event.jour == 1).toList();
 
     return Scaffold(
       appBar: AppBar(
