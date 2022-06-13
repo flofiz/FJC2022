@@ -57,14 +57,15 @@ class Event extends TimePlannerTask {
         minutes: minutes,
       ),
       onTap: () => {
-        // Navigator.of(context).pop(),
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => SessionPage(
-                      session: engTheme,
-                      to_show: presentations,
-                    )))
+        if (theme != "Pause")
+          // Navigator.of(context).pop(),
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SessionPage(
+                        session: engTheme,
+                        to_show: presentations,
+                      )))
       },
       minutesDuration: duree,
       daysDuration: dureeJour,
