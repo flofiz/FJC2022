@@ -21,14 +21,15 @@ class PresPage extends StatelessWidget {
       body: Column(children: [
         Padding(
             padding: EdgeInsets.all(10.0),
-            child: Text(this.nom + " " + this.prenom)),
+            child: Text(this.nom + " " + this.prenom,
+                style: TextStyle(fontWeight: FontWeight.bold))),
         Expanded(
             flex: 1,
             child: SingleChildScrollView(
                 scrollDirection: Axis.vertical, //.horizontal
                 child: Padding(
                     padding: EdgeInsets.only(left: 20.0, right: 20),
-                    child: Text(this.resume))))
+                    child: Text(this.resume, textAlign: TextAlign.justify))))
       ]),
     );
   }

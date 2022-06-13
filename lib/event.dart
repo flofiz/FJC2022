@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'session.dart';
 import 'pres.dart';
 import 'package:time_planner/time_planner.dart';
+import 'package:fjc_2022/postersession.dart';
+import 'package:fjc_2022/homepage.dart';
 
 class Event extends TimePlannerTask {
   final String nom;
@@ -12,6 +14,7 @@ class Event extends TimePlannerTask {
   final int dureeJour;
   final String theme;
   final String engTheme;
+  final String type;
   final List<Pres> presentations;
 
   Event(
@@ -23,6 +26,7 @@ class Event extends TimePlannerTask {
       required this.dureeJour,
       required this.theme,
       required this.engTheme,
+      required this.type,
       required this.presentations})
       : super(
             minutesDuration: duree,
@@ -42,6 +46,8 @@ class Event extends TimePlannerTask {
       return Colors.grey;
     } else if (theme == 'Table ronde') {
       return Colors.amber;
+    } else if (theme == 'Posters') {
+      return Colors.purple;
     } else {
       return Colors.grey;
     }
@@ -57,15 +63,27 @@ class Event extends TimePlannerTask {
         minutes: minutes,
       ),
       onTap: () => {
-        if (theme != "Pause")
-          // Navigator.of(context).pop(),
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => SessionPage(
-                        session: engTheme,
-                        to_show: presentations,
-                      )))
+        // Navigator.of(context).pop(),
+        if (type == "Posters")
+          {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PosterPage(
+                          session: engTheme,
+                          to_show: presentations,
+                        )))
+          }
+        else if (engTheme != "Break")
+          {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SessionPage(
+                          session: engTheme,
+                          to_show: presentations,
+                        )))
+          }
       },
       minutesDuration: duree,
       daysDuration: dureeJour,
