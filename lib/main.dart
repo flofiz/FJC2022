@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // List<List<dynamic>> _data = [];
   var _data = <Pres>[];
   var _events = <Event>[];
-
+  var to_show = <Event>[];
   int day_fliter = 0;
 
   void _loadCSV() async {
@@ -172,19 +172,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   day_fliter = 0;
                 }),
                 Navigator.of(context).pop(),
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => Day1(
-                //               data: _data
-                //                   .where((Pres) => Pres.jour == "1")
-                //                   .toList(),
-                //             )))
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.verified_user),
+              title: Text('Day 2'),
+              onTap: () => {
+                setState(() {
+                  day_fliter = 1;
+                }),
+                Navigator.of(context).pop(),
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Day 2'),
+              title: Text('Day 3'),
               onTap: () => {
                 setState(() {
                   day_fliter = 2;
