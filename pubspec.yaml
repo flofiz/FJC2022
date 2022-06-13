@@ -59,7 +59,6 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/data.csv
     - assets/Tableau_abstract2.csv
     - assets/Logo.jpeg
     - assets/jeudi16.csv

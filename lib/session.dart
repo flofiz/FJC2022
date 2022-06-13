@@ -9,6 +9,7 @@ class SessionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var oral_to_show = to_show.where((Pres) => Pres.type == "Oral").toList();
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -16,10 +17,10 @@ class SessionPage extends StatelessWidget {
         title: Text(session),
       ),
       body: ListView.builder(
-        itemCount: to_show.length,
+        itemCount: oral_to_show.length,
         shrinkWrap: true,
         itemBuilder: (_, index) {
-          return to_show[index];
+          return oral_to_show[index];
         },
       ),
     );
