@@ -51,16 +51,18 @@ class PosterPage extends StatelessWidget {
       List<Pres> new_to_show = to_show
           .where((Pres) => Pres.session == session && Pres.jour == '1')
           .toList();
-      children.add(Text(session + '\n'));
-      children.add(Expanded(
-        child: ListView.builder(
+      children.add(Text('\n' + session + '\n',
+          style: TextStyle(fontWeight: FontWeight.bold)));
+      children.add(
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
           itemCount: new_to_show.length,
           shrinkWrap: true,
           itemBuilder: (_, index) {
             return new_to_show[index];
           },
         ),
-      ));
+      );
     }
     return Scaffold(
         appBar: AppBar(
@@ -68,6 +70,8 @@ class PosterPage extends StatelessWidget {
           // the App.build method, and use it to set our appbar title.
           title: Text(session),
         ),
-        body: Column(children: [...children]));
+        body: SafeArea(
+            child:
+                SingleChildScrollView(child: Column(children: [...children]))));
   }
 }
