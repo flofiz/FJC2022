@@ -7,8 +7,14 @@ import 'dart:convert' show utf8;
 import 'package:csv/csv.dart';
 import 'event.dart';
 import 'package:time_planner/time_planner.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
