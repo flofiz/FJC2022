@@ -92,9 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
             theme: item[7],
             engTheme: item[8],
             type: item[9],
-            presentations: _data
-                .where((Pres) => Pres.type == 'Poster' && Pres.jour == '1')
-                .toList()));
+            jour_pres: item[10],
+            presentations:
+                _data.where((Pres) => Pres.type == 'Poster').toList()));
       } else {
         _events.add(Event(
             nom: item[0],
@@ -106,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
             theme: item[7],
             engTheme: item[8],
             type: item[9],
+            jour_pres: item[10],
             presentations:
                 _data.where((Pres) => Pres.session == item[8]).toList()));
       }
@@ -172,6 +173,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   day_fliter = 0;
                 }),
                 Navigator.of(context).pop(),
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Day1(
+                            data: _events
+                                .where((Event) => Event.jour_pres == 1)
+                                .toList(),
+                            jour: 1)))
               },
             ),
             ListTile(
@@ -182,53 +191,47 @@ class _MyHomePageState extends State<MyHomePage> {
                   day_fliter = 1;
                 }),
                 Navigator.of(context).pop(),
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Day1(
+                            data: _events
+                                .where((Event) => Event.jour_pres == 2)
+                                .toList(),
+                            jour: 1)))
               },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Day 3'),
-              onTap: () => {
-                setState(() {
-                  day_fliter = 2;
-                }),
-                Navigator.of(context).pop()
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.border_color),
-              title: Text('Saved'),
-              onTap: () => {Navigator.of(context).pop()},
             ),
           ],
         ),
       ),
-      body: Center(
-        child: TimePlanner(
-          // time will be start at this hour on table
-          startHour: 8,
-          // time will be end at this hour on table
-          endHour: 22,
-          // each header is a column and a day
-          headers: [
-            TimePlannerTitle(
-              date: " ",
-              title: "Orbigny",
-            ),
-            TimePlannerTitle(
-              date: "",
-              title: "Ampère",
-            ),
-            TimePlannerTitle(
-              date: " ",
-              title: "Salle R3",
-            ),
-          ],
-          // List of task will be show on the time planner
-          tasks: _events,
+      body: Text('Bienvenue au FJC'),
+      // body: Center(
+      //   child: TimePlanner(
+      //     // time will be start at this hour on table
+      //     startHour: 8,
+      //     // time will be end at this hour on table
+      //     endHour: 22,
+      //     // each header is a column and a day
+      //     headers: [
+      //       TimePlannerTitle(
+      //         date: " ",
+      //         title: "Orbigny",
+      //       ),
+      //       TimePlannerTitle(
+      //         date: "",
+      //         title: "Ampère",
+      //       ),
+      //       TimePlannerTitle(
+      //         date: " ",
+      //         title: "Salle R3",
+      //       ),
+      //     ],
+      //     // List of task will be show on the time planner
+      //     tasks: _events,
 
-          style: TimePlannerStyle(showScrollBar: true),
-        ),
-      ),
+      //     style: TimePlannerStyle(showScrollBar: true),
+      //   ),
+      // ),
     );
   }
 }

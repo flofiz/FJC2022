@@ -7,15 +7,22 @@ import 'dart:convert';
 class PosterPage extends StatelessWidget {
   final String session;
   final List<Pres> to_show;
-  const PosterPage({Key? key, required this.session, required this.to_show})
+  final int jour;
+  const PosterPage(
+      {Key? key,
+      required this.session,
+      required this.to_show,
+      required this.jour})
       : super(key: key);
 
   // récupère les diférentes thématiques de session poster
   List getPosterSession(to_show) {
     var all_session = [];
     for (var item in to_show) {
-      if (!all_session.contains(item.session)) {
-        all_session.add(item.session);
+      if (item.jour == jour.toString()) {
+        if (!all_session.contains(item.session)) {
+          all_session.add(item.session);
+        }
       }
     }
     return all_session;
@@ -33,7 +40,8 @@ class PosterPage extends StatelessWidget {
     for (var session in all_sessions) {
       // Je récupère les participants
       List<Pres> new_to_show = to_show
-          .where((Pres) => Pres.session == session && Pres.jour == '1')
+          .where(
+              (Pres) => Pres.session == session && Pres.jour == jour.toString())
           .toList();
       // Texte avec le thème de la session
       children.add(Text('\n' + session + '\n',
