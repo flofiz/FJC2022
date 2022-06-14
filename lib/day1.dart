@@ -9,19 +9,70 @@ import 'package:fjc_2022/session.dart';
 import 'package:fjc_2022/event.dart';
 import 'dart:convert';
 
+@immutable
 class Day1 extends StatelessWidget {
   // Liste des tâches qui est appelé par le TimePlanner
   final List<Event> data;
   final int jour;
 
-  Day1({required this.data, required this.jour});
+  const Day1({Key? key, required this.data, required this.jour})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(data);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Planning Jeudi 16 Juin'),
+        title: (jour == 1)
+            ? Text('Planning Jeudi 16 Juin')
+            : Text('Planning Vendredi 17 Juin'),
         centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'Menu',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+            ),
+            ListTile(
+                leading: Icon(Icons.input),
+                title: Text('Home page'),
+                onTap: () => {
+                      Navigator.of(context).pop(),
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => HomePage()))
+                    }),
+            ListTile(
+              leading: Icon(Icons.verified_user),
+              title: Text('Day 1'),
+              onTap: () => {
+                Navigator.of(context).pop(),
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Day1(data: data, jour: 1)))
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.verified_user),
+              title: Text('Day 2'),
+              onTap: () => {
+                Navigator.of(context).pop(),
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Day1(data: data, jour: 2)))
+              },
+            ),
+          ],
+        ),
       ),
       body: Center(
         child: TimePlanner(
@@ -31,7 +82,7 @@ class Day1 extends StatelessWidget {
           endHour: 22,
           // each header is a column and a day
           headers: [
-            TimePlannerTitle(
+            const TimePlannerTitle(
               date: " ",
               title: "Orbigny",
             ),
@@ -39,13 +90,13 @@ class Day1 extends StatelessWidget {
               date: "",
               title: "Ampère",
             ),
-            TimePlannerTitle(
+            const TimePlannerTitle(
               date: " ",
               title: "Salle R3",
             ),
           ],
           // List of task will be show on the time planner
-          tasks: data,
+          tasks: data.where((Event) => Event.jour_pres == jour).toList(),
 
           style: TimePlannerStyle(showScrollBar: true),
         ),

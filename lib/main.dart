@@ -56,7 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
   var _data = <Pres>[];
   var _events = <Event>[];
   var to_show = <Event>[];
-  int day_fliter = 0;
+  var day1;
+  var day2;
+  int day_fliter = 1;
+  var day;
 
   void _loadCSV() async {
     var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
@@ -121,6 +124,12 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _data = _data;
       _events = _events;
+      day1 = Day1(
+          data: _events.where((Event) => Event.jour_pres == 1).toList(),
+          jour: 1);
+      day2 = Day1(
+          data: _events.where((Event) => Event.jour_pres == 2).toList(),
+          jour: 2);
     });
   }
 
@@ -128,6 +137,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _loadCSV();
+  }
+
+  void changeDay(BuildContext context, day_to_change) {
+    setState(() {
+      day = day_to_change;
+    });
   }
 
   @override
@@ -141,103 +156,67 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // List<TimePlannerTask> to_show =
     //     _events.where((Event) => Event.jour == 1).toList();
-
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-
-      // Menu pour accéder à toutes les différentes pages
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 25),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.green,
-              ),
-            ),
-            ListTile(
-                leading: Icon(Icons.input),
-                title: Text('Home page'),
-                onTap: () => {
-                      Navigator.of(context).pop(),
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()))
-                    }),
-            ListTile(
-              leading: Icon(Icons.verified_user),
-              title: Text('Day 1'),
-              onTap: () => {
-                setState(() {
-                  day_fliter = 0;
-                }),
-                Navigator.of(context).pop(),
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Day1(
-                            data: _events
-                                .where((Event) => Event.jour_pres == 1)
-                                .toList(),
-                            jour: 1)))
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.verified_user),
-              title: Text('Day 2'),
-              onTap: () => {
-                setState(() {
-                  day_fliter = 1;
-                }),
-                Navigator.of(context).pop(),
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Day1(
-                            data: _events
-                                .where((Event) => Event.jour_pres == 2)
-                                .toList(),
-                            jour: 1)))
-              },
-            ),
-          ],
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
         ),
-      ),
-      body: Text('Bienvenue au FJC'),
-      // body: Center(
-      //   child: TimePlanner(
-      //     // time will be start at this hour on table
-      //     startHour: 8,
-      //     // time will be end at this hour on table
-      //     endHour: 22,
-      //     // each header is a column and a day
-      //     headers: [
-      //       TimePlannerTitle(
-      //         date: " ",
-      //         title: "Orbigny",
-      //       ),
-      //       TimePlannerTitle(
-      //         date: "",
-      //         title: "Ampère",
-      //       ),
-      //       TimePlannerTitle(
-      //         date: " ",
-      //         title: "Salle R3",
-      //       ),
-      //     ],
-      //     // List of task will be show on the time planner
-      //     tasks: _events,
 
-      //     style: TimePlannerStyle(showScrollBar: true),
-      //   ),
-      // ),
-    );
+        // Menu pour accéder à toutes les différentes pages
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text(
+                  'Menu',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                ),
+              ),
+              ListTile(
+                  leading: Icon(Icons.input),
+                  title: Text('Home page'),
+                  onTap: () => {
+                        Navigator.of(context).pop(),
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => HomePage()))
+                      }),
+              ListTile(
+                leading: Icon(Icons.verified_user),
+                title: Text('Day 1'),
+                onTap: () => {
+                  setState(() {
+                    day_fliter = 1;
+                    Navigator.of(context).pop();
+                  }),
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Day1(data: _events, jour: 1)))
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.verified_user),
+                title: Text('Day 2'),
+                onTap: () => {
+                  setState(() {
+                    day_fliter = 2;
+                    changeDay(context, day2);
+                    Navigator.of(context).pop();
+                  }),
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Day1(data: _events, jour: 2)))
+                },
+              ),
+            ],
+          ),
+        ),
+        body: day);
   }
 }
