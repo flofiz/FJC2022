@@ -156,67 +156,68 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // List<TimePlannerTask> to_show =
     //     _events.where((Event) => Event.jour == 1).toList();
-    return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-        ),
+    return HomePage(data: _events);
+    // Scaffold(
+    //     appBar: AppBar(
+    //       // Here we take the value from the MyHomePage object that was created by
+    //       // the App.build method, and use it to set our appbar title.
+    //       title: Text(widget.title),
+    //     ),
 
-        // Menu pour accéder à toutes les différentes pages
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Text(
-                  'Menu',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                ),
-              ),
-              ListTile(
-                  leading: Icon(Icons.input),
-                  title: Text('Home page'),
-                  onTap: () => {
-                        Navigator.of(context).pop(),
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => HomePage()))
-                      }),
-              ListTile(
-                leading: Icon(Icons.verified_user),
-                title: Text('Day 1'),
-                onTap: () => {
-                  setState(() {
-                    day_fliter = 1;
-                    Navigator.of(context).pop();
-                  }),
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Day1(data: _events, jour: 1)))
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.verified_user),
-                title: Text('Day 2'),
-                onTap: () => {
-                  setState(() {
-                    day_fliter = 2;
-                    changeDay(context, day2);
-                    Navigator.of(context).pop();
-                  }),
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Day1(data: _events, jour: 2)))
-                },
-              ),
-            ],
-          ),
-        ),
-        body: day);
+    //     // Menu pour accéder à toutes les différentes pages
+    //     drawer: Drawer(
+    //       child: ListView(
+    //         padding: EdgeInsets.zero,
+    //         children: <Widget>[
+    //           DrawerHeader(
+    //             child: Text(
+    //               'Menu',
+    //               style: TextStyle(color: Colors.white, fontSize: 25),
+    //             ),
+    //             decoration: BoxDecoration(
+    //               color: Colors.green,
+    //             ),
+    //           ),
+    //           ListTile(
+    //               leading: Icon(Icons.input),
+    //               title: Text('Home page'),
+    //               onTap: () => {
+    //                     Navigator.of(context).pop(),
+    //                     Navigator.pushReplacement(context,
+    //                         MaterialPageRoute(builder: (context) => HomePage()))
+    //                   }),
+    //           ListTile(
+    //             leading: Icon(Icons.verified_user),
+    //             title: Text('Day 1'),
+    //             onTap: () => {
+    //               setState(() {
+    //                 day_fliter = 1;
+    //                 Navigator.of(context).pop();
+    //               }),
+    //               Navigator.push(
+    //                   context,
+    //                   MaterialPageRoute(
+    //                       builder: (context) => Day1(data: _events, jour: 1)))
+    //             },
+    //           ),
+    //           ListTile(
+    //             leading: Icon(Icons.verified_user),
+    //             title: Text('Day 2'),
+    //             onTap: () => {
+    //               setState(() {
+    //                 day_fliter = 2;
+    //                 changeDay(context, day2);
+    //                 Navigator.of(context).pop();
+    //               }),
+    //               Navigator.push(
+    //                   context,
+    //                   MaterialPageRoute(
+    //                       builder: (context) => Day1(data: _events, jour: 2)))
+    //             },
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //     body: day);
   }
 }

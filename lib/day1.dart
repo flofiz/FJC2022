@@ -46,15 +46,19 @@ class Day1 extends StatelessWidget {
                 title: Text('Home page'),
                 onTap: () => {
                       Navigator.of(context).pop(),
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => HomePage()))
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePage(
+                                    data: data,
+                                  )))
                     }),
             ListTile(
               leading: Icon(Icons.verified_user),
               title: Text('Day 1'),
               onTap: () => {
                 Navigator.of(context).pop(),
-                Navigator.pushReplacement(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Day1(data: data, jour: 1)))
@@ -65,7 +69,7 @@ class Day1 extends StatelessWidget {
               title: Text('Day 2'),
               onTap: () => {
                 Navigator.of(context).pop(),
-                Navigator.pushReplacement(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Day1(data: data, jour: 2)))
