@@ -104,6 +104,20 @@ class _MyHomePageState extends State<MyHomePage> {
             jour_pres: item[10],
             presentations:
                 _data.where((Pres) => Pres.type == 'Poster').toList()));
+      } else if (item[11] == 1) {
+        _events.add(Event(
+            nom: item[0] + '\n' + item[4],
+            heure: item[1],
+            minutes: item[2],
+            duree: item[3],
+            jour: item[5],
+            dureeJour: item[6],
+            theme: item[7],
+            engTheme: item[8],
+            type: item[9],
+            jour_pres: item[10],
+            presentations:
+                _data.where((Pres) => Pres.session == item[8]).toList()));
       } else {
         _events.add(Event(
             nom: item[0],

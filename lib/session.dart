@@ -14,7 +14,8 @@ class SessionPage extends StatelessWidget {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(session),
+        title: Text(session + ' \n ' + oral_to_show[0].debut,
+            textAlign: TextAlign.center),
       ),
       body: ListView.builder(
         itemCount: oral_to_show.length,

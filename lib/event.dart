@@ -4,6 +4,7 @@ import 'pres.dart';
 import 'package:time_planner/time_planner.dart';
 import 'package:fjc_2022/postersession.dart';
 import 'package:fjc_2022/homepage.dart';
+import 'package:fjc_2022/confpage.dart';
 
 class Event extends TimePlannerTask {
   final String nom;
@@ -75,6 +76,17 @@ class Event extends TimePlannerTask {
                           session: engTheme,
                           to_show: presentations,
                           jour: jour_pres,
+                        )))
+          }
+        else if (type == "Conf")
+          {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ConfPage(
+                          conference: engTheme,
+                          heure: heure,
+                          minutes: minutes,
                         )))
           }
         else if (engTheme != "Break")

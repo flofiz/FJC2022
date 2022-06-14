@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                                   )))
                     }),
             ListTile(
-              leading: Icon(Icons.verified_user),
+              leading: Icon(Icons.calendar_today),
               title: Text('Day 1'),
               onTap: () => {
                 Navigator.of(context).pop(),
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.verified_user),
+              leading: Icon(Icons.calendar_today),
               title: Text('Day 2'),
               onTap: () => {
                 Navigator.of(context).pop(),
