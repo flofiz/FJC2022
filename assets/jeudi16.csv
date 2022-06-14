@@ -1,9 +1,9 @@
 Nom;Heure début;Minutes début;Durée;Salle;Jour;DurJour;Thématique;Title_Session;Type session;Jour;Couleur
 Accueil;8;30;30;Hall;0;3;Pause;Break;Pause;1;blue
 Cérémonie d'ouverture;9;0;30;Keiling;0;3;Pause;Break;Pause;1;blue
-Maladies et génétique;9;30;90;Salle R3;2;1;Santé;Diseases and Genetics;Oral;1;blue
+Maladies et génétique;9;30;90;Ampère;1;1;Santé;Diseases and Genetics;Oral;1;blue
 Géologie et botanique;9;30;90;Orbingy;0;1;Environnement;Geology and Botany;Oral;1;green
-Nutrition et alimentation;9;30;90;Ampère;1;1;Santé;Nutrition and Food;Oral;1;blue
+Nutrition et alimentation;9;30;90;Salle R3;2;1;Santé;Nutrition and Food;Oral;1;blue
 Pause;11;0;20;Hall;0;3;Pause;Break;Oral;1;grey
 Neurobiologie;11;20;90;Orbingy;0;1;Santé;Neurobiology;Oral;1;blue
 Pneumologie & cardiologie;11;20;90;Ampère;1;1;Santé;Pulmonology and Cardiology;Oral;1;blue
@@ -15,13 +15,13 @@ Paléoécologie;14;20;70;Hall;0;1;Environnement;Paleoecology;Poster;1;green
 Agroécologie;14;20;70;Hall;0;1;Environnement;Agroecology;Poster;1;green
 Posters;14;20;70;Hall;0;3;Posters;Posters;Posters;1;green
 Pause;15;30;20;Hall;0;3;Pause;Break;Oral;1;grey
-Table ronde expérimentarium;15;50;60;Salle R4;0;3;Table ronde;Exerimentarium panel;Oral;1;yellow
+Table ronde expérimentarium;15;50;60;Orbigny;0;3;Table ronde;Exerimentarium panel;Oral;1;yellow
 Cognition et apprentissage;16;50;75;Salle R3;2;1;Santé;Cognition and Learning;Oral;1;blue
 Cancérologie 1;16;50;75;Orbingy;0;1;Santé;Oncology 1;Oral;1;blue
 Microbiologie;16;50;75;Ampère;1;1;Santé;Microbiology;Oral;1;blue
 Accueil;8;30;30;Hall;0;3;Pause;Break;Pause;2;blue
 Cancérologie 2;9;0;90;Orbigny;0;1;Santé;Oncology 2;Oral;2;blue
-Nutrition et goût;9;0;90;Ampère;1;1;Santé;Break;Oral;2;blue
+Nutrition et goût;9;0;90;Ampère;1;1;Santé;Nutrition and Taste;Oral;2;blue
 Divers 2;9;0;90;Salle R3;2;1;Environnement;Miscellaneous 2;Oral;2;blue
 Pause;10;30;20;Hall;0;3;Pause;Break;Pause;2;blue
 Maladies et cancers;10;50;70;Hall;0;3;Santé;Break;Poster;2;blue
@@ -30,8 +30,9 @@ Divers;10;50;70;Hall;0;3;Environnement;Break;Poster;2;blue
 Posters;10;50;70;Hall;0;3;Posters;Posters;Posters;2;green
 Conférence;12;0;60;Keiling;0;3;Environnement;Break;Pause;2;blue
 Pause déjeuner;13;0;80;RU Monrmuzard;0;3;Pause;Break;Pause;2;blue
-Table ronde post-doc;14;20;60;Salle R2;0;3;Table ronde;Break;Pause;2;blue
+Table ronde post-doc;14;20;60;Keiling;0;3;Table ronde;Break;Pause;2;blue
 Pause;15;20;20;Hall;0;3;Pause;Break;Pause;2;blue
-Cancérologie 3;15;40;90;Salle R3;2;1;Santé;Oncology 3;Oral;2;blue
-Cognition et mouvement;15;40;90;Orbigny;0;1;Santé;Break;Oral;2;blue
-Géologie;15;40;90;Ampère;1;1;Environnement;Break;Oral;2;blue
+Cancérologie 3;15;40;90;Orbigny;0;1;Santé;Oncology 3;Oral;2;blue
+Cognition et mouvement;15;40;90;Salle R3;2;1;Santé;Cognition and Mouvement;Oral;2;blue
+Géologie;15;40;90;Ampère;1;1;Environnement;Geology;Oral;2;blue
+Remise des prix / clotûre;17;20;30;Keiling;0;3;Pause;Break;Pause;2;Blue
