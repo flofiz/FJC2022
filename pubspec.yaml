@@ -67,6 +67,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/Tableau_abstract2.csv
+    - assets/Tableau_abstract2_1.csv
     - assets/Logo.jpeg
     - assets/jeudi16.csv
   # To add assets to your application, add an assets section, like this:

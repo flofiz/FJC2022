@@ -62,7 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
   var day;
 
   void _loadCSV() async {
-    var _rawData = await rootBundle.loadString("assets/Tableau_abstract2.csv");
+    var _rawData =
+        await rootBundle.loadString("assets/Tableau_abstract2_1.csv");
 
     List<List<dynamic>> _listData =
         const CsvToListConverter(fieldDelimiter: ";")
