@@ -14,10 +14,6 @@ class ConfPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var children;
     if (conference == "Experimentarium panel") {
-      children = Text('Vous aller participer à une démo expérimentarium');
-    } else if (conference == "Post-doc panel") {
-      children = Text('Conf sur le post doc');
-    } else if (conference == "Conference") {
       children = Column(children: [
         Padding(
             padding: EdgeInsets.all(8.0),
@@ -32,6 +28,12 @@ class ConfPage extends StatelessWidget {
                 "Coralie Biguzzi - Mission Culture Scientifique - Responsable des formations à l'Experimentarium et des Nuits européennes des Chercheurs à Dijon")),
         Text('https://www.experimentarium.fr/')
       ]);
+    } else if (conference == "Post-doc panel") {
+      children = Text(
+          "la Bourgogne Franche-Comté dispose d'un continuum d'accompagnement à destination des porteurs de projet qui souhaitent se lancer dans l'entrepreneuriat. Venez découvrir les acteurs et dispositifs qui soutiennent les doctorants et jeunes chercheurs dans leur création d'entreprise.");
+    } else if (conference == "Conference") {
+      children =
+          Text("Conférence sur l'impact de la recherche sur l'environnement");
     }
 
     return Scaffold(
