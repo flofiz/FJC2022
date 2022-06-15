@@ -18,8 +18,20 @@ class ConfPage extends StatelessWidget {
     } else if (conference == "Post-doc panel") {
       children = Text('Conf sur le post doc');
     } else if (conference == "Conference") {
-      children =
-          Text("Conférence sur l'impact de la recherche sur l'environnement");
+      children = Column(children: [
+        Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Comment communiquer sa recherche à différents publics ? Formations et retours d'expériences",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            )),
+        SizedBox(height: 10),
+        Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+                "Coralie Biguzzi - Mission Culture Scientifique - Responsable des formations à l'Experimentarium et des Nuits européennes des Chercheurs à Dijon")),
+        Text('https://www.experimentarium.fr/')
+      ]);
     }
 
     return Scaffold(

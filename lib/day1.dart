@@ -20,7 +20,6 @@ class Day1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(data);
     return Scaffold(
       appBar: AppBar(
         title: (jour == 1)
